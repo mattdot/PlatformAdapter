@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
+    <projectUrl>http://opensource.org/licenses/MS-PL</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial POC</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <tags>POC</tags>
+  </metadata>
+  <files>
+    <file src="..\PlatformAdapter.Windows\bin\Release\PlatformAdapter.Windows.dll" target="lib\win"/>
+    <file src="..\PlatformAdapter\bin\Release\PlatformAdapterPOC.dll" target="lib\win"/>
+    <file src="..\PlatformAdapter.Phone8\bin\Release\PlatformAdapter.Phone8.dll" target="lib\wp"/>
+    <file src="..\PlatformAdapter\bin\Release\PlatformAdapterPOC.dll" target="lib\wp"/>
+  </files>
+</package>
