@@ -83,8 +83,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BackgroundAudio.cs" />
     <Compile Include="Phone8Platform.cs" />
-    <Compile Include="SomeAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

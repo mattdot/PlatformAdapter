@@ -16,8 +16,8 @@
   </metadata>
   <files>
     <file src="..\PlatformAdapter.Windows\bin\Release\PlatformAdapter.Windows.dll" target="lib\win"/>
-    <file src="..\PlatformAdapter\bin\Release\PlatformAdapterPOC.dll" target="lib\win"/>
+    <file src="..\PlatformAdapter\bin\Release\PlatformAdapter.dll" target="lib\win"/>
     <file src="..\PlatformAdapter.Phone8\bin\Release\PlatformAdapter.Phone8.dll" target="lib\wp"/>
-    <file src="..\PlatformAdapter\bin\Release\PlatformAdapterPOC.dll" target="lib\wp"/>
+    <file src="..\PlatformAdapter\bin\Release\PlatformAdapter.dll" target="lib\wp"/>
   </files>
 </package>

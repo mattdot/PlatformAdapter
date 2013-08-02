@@ -11,7 +11,7 @@ namespace PlatformAdapter
     {
         public static void Initialize(this Platform platform)
         {
-            platform.Register<ISomeAdapter, SomeAdapter>();
+            platform.Locator.RegisterType<IBackgroundAudio, BackgroundAudio>();
         }
     }
 }

@@ -99,7 +99,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="SomeAdapter.cs" />
+    <Compile Include="BackgroundAudio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WindowsPlatform.cs" />
   </ItemGroup>

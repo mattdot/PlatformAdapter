@@ -11,7 +11,12 @@ namespace PlatformAdapter
     /// </summary>
     public class Platform
     {
-        private static readonly Platform current = new Platform();
+        private static readonly Platform current = new Platform(new SimpleServiceLocator());
+        
+
+        public static void Configure(IServiceLocator locator)
+        {
+        }
 
         public static Platform Current
         {
@@ -21,31 +26,45 @@ namespace PlatformAdapter
             }
         }
 
-        private Platform()
+        private Platform(IServiceLocator locator)
         {
-
+            this.Locator = locator;
         }
 
-        private Dictionary<Type, Type> typeMap = new Dictionary<Type, Type>();
+        private IServiceLocator locator;
 
-        public void Register<TInterface, TImplementation>() where TImplementation : new()
+        public IServiceLocator Locator
         {
-            //todo: make sure implementation implements interface
-
-            this.typeMap[typeof(TInterface)] = typeof(TImplementation);
-        }
-
-        public T GetAdapter<T>()
-        {
-            Type imp;
-
-            if (this.typeMap.TryGetValue(typeof(T), out imp))
+            get
             {
-                return (T) Activator.CreateInstance(imp);
+                return this.locator;
             }
-            else
+            set
             {
-                return default(T);
+                if (null == value)
+                {
+                    throw new InvalidOperationException("Can't set the locator to null");
+                }
+
+                this.locator = value;
+            }
+        }
+
+        private IBackgroundAudio bkgAudio;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public IBackgroundAudio BackgroundAudio
+        {
+            get
+            {
+                if (null == this.bkgAudio)
+                {
+                    this.bkgAudio = this.locator.Resolve<IBackgroundAudio>();
+                }
+
+                return this.bkgAudio;
             }
         }
     }
