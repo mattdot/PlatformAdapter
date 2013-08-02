@@ -12,6 +12,46 @@ namespace PlatformAdapter.Windows
     {
         MediaElement mediaElement;
 
+        public BackgroundAudio()
+        {
+            MediaControl.PlayPauseTogglePressed += MediaControl_PlayPauseTogglePressed;
+            MediaControl.PausePressed += MediaControl_PausePressed;
+            MediaControl.PlayPressed += MediaControl_PlayPressed;
+            MediaControl.StopPressed += MediaControl_StopPressed;
+            MediaControl.NextTrackPressed += MediaControl_NextTrackPressed;
+        }
+
+        void MediaControl_NextTrackPressed(object sender, object e)
+        {
+            
+        }
+
+        void MediaControl_StopPressed(object sender, object e)
+        {
+            
+        }
+
+        void MediaControl_PlayPressed(object sender, object e)
+        {
+                
+        }
+
+        void MediaControl_PausePressed(object sender, object e)
+        {
+            if (this.CanPause)
+            {
+                this.Pause();
+            }
+        }
+
+        void MediaControl_PlayPauseTogglePressed(object sender, object e)
+        {
+            
+        }
+
+
+
+
         public BackgroundAudio(MediaElement mediaElement)
         {
             this.mediaElement = mediaElement;
@@ -66,7 +106,16 @@ namespace PlatformAdapter.Windows
         
         public IAudioTrack CreateAudioTrack()
         {
+            
             return null;
+        }
+
+        public void SetTrack(IAudioTrack track)
+        {
+            MediaControl.AlbumArt = track.AlbumArt;
+            MediaControl.ArtistName = track.Artist;
+            MediaControl.TrackName = "";
+            
         }
 
         public bool CanChangeRate

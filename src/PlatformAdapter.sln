@@ -1,6 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.20617.1 PREVIEW
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C1DDF02B-B1EC-4936-AA90-34DCF7FDF15D}"
+	ProjectSection(SolutionItems) = preProject
+		PlatformAdapter\PlatformAdapter.nuspec = PlatformAdapter\PlatformAdapter.nuspec
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformAdapter.Windows", "PlatformAdapter.Windows\PlatformAdapter.Windows.csproj", "{FC41FFAF-C874-4A83-8947-2C114BD7FD03}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformAdapter.Phone8", "PlatformAdapter.Phone8\PlatformAdapter.Phone8.csproj", "{5F02AA2F-131D-487D-AACA-16CF77392A92}"
@@ -8,11 +15,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformAdapter.Phone7", "PlatformAdapter.Phone7\PlatformAdapter.Phone7.csproj", "{B5148A23-E8EF-4295-89E6-3718A0F03A46}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformAdapter", "PlatformAdapter\PlatformAdapter.csproj", "{2B3BC557-165A-4565-B2C8-BF5B2F5814FE}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C1DDF02B-B1EC-4936-AA90-34DCF7FDF15D}"
-	ProjectSection(SolutionItems) = preProject
-		PlatformAdapter\PlatformAdapter.nuspec = PlatformAdapter\PlatformAdapter.nuspec
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

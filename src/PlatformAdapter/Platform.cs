@@ -11,13 +11,10 @@ namespace PlatformAdapter
     /// </summary>
     public class Platform
     {
+        #region Static Implementation
+
         private static readonly Platform current = new Platform(new SimpleServiceLocator());
         
-
-        public static void Configure(IServiceLocator locator)
-        {
-        }
-
         public static Platform Current
         {
             get
@@ -26,11 +23,31 @@ namespace PlatformAdapter
             }
         }
 
+        public static T Resolve<T>()
+        {
+            return Platform.current.locator.Resolve<T>();
+        }
+
+        public static IBackgroundAudio BackgroundAudio
+        {
+            get
+            {
+                if (null == Platform.current.backgroundAudio)
+                {
+                    Platform.current.backgroundAudio = Platform.Resolve<IBackgroundAudio>();
+                }
+                return Platform.current.backgroundAudio;
+            }
+        }
+
+        #endregion
+
         private Platform(IServiceLocator locator)
         {
             this.Locator = locator;
         }
 
+        private IBackgroundAudio backgroundAudio;
         private IServiceLocator locator;
 
         public IServiceLocator Locator
@@ -50,22 +67,6 @@ namespace PlatformAdapter
             }
         }
 
-        private IBackgroundAudio bkgAudio;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public IBackgroundAudio BackgroundAudio
-        {
-            get
-            {
-                if (null == this.bkgAudio)
-                {
-                    this.bkgAudio = this.locator.Resolve<IBackgroundAudio>();
-                }
-
-                return this.bkgAudio;
-            }
-        }
+        
     }
 }
