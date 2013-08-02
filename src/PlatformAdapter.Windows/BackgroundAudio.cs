@@ -132,13 +132,20 @@ namespace PlatformAdapter.Windows
         {
             get
             {
-                throw new NotImplementedException();
+                return new BackgroundAudioTrack
+                {
+                    AlbumArt = MediaControl.AlbumArt,
+                    Artist = MediaControl.ArtistName,
+                    Title = MediaControl.TrackName,
+                    Source = this.mediaElement.Source
+                };
             }
             set
             {
                 MediaControl.AlbumArt = value.AlbumArt;
                 MediaControl.ArtistName = value.Artist;
                 MediaControl.TrackName = value.Title;
+                this.mediaElement.Source = value.Source;
             }
         }
     }
