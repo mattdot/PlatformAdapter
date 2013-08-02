@@ -38,19 +38,13 @@ namespace PlatformAdapter.Windows
 
         void MediaControl_PausePressed(object sender, object e)
         {
-            if (this.CanPause)
-            {
-                this.Pause();
-            }
+  
         }
 
         void MediaControl_PlayPauseTogglePressed(object sender, object e)
         {
             
         }
-
-
-
 
         public BackgroundAudio(MediaElement mediaElement)
         {
@@ -107,15 +101,7 @@ namespace PlatformAdapter.Windows
         public IAudioTrack CreateAudioTrack()
         {
             
-            return null;
-        }
-
-        public void SetTrack(IAudioTrack track)
-        {
-            MediaControl.AlbumArt = track.AlbumArt;
-            MediaControl.ArtistName = track.Artist;
-            MediaControl.TrackName = "";
-            
+            return new BackgroundAudioTrack();
         }
 
         public bool CanChangeRate
@@ -135,62 +121,65 @@ namespace PlatformAdapter.Windows
 
 
         public event EventHandler PlayStateChanged;
+
+
+        public bool IsPlaying
+        {
+            get { return MediaControl.IsPlaying; }
+        }
+
+        public IAudioTrack CurrentTrack
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                MediaControl.AlbumArt = value.AlbumArt;
+                MediaControl.ArtistName = value.Artist;
+                MediaControl.TrackName = value.Title;
+            }
+        }
     }
 
     internal sealed class BackgroundAudioTrack : IAudioTrack
     {
-        
+
         public string Album
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         public string Artist
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         public Uri Source
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         public Uri AlbumArt
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         public TimeSpan Duration
         {
-            get { throw new NotImplementedException(); }
+            get { return TimeSpan.Zero; }
+        }
+
+
+        public string Title
+        {
+            get;
+            set;
         }
     }
 }

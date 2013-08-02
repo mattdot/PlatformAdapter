@@ -14,9 +14,12 @@ namespace PlatformAdapter
         bool CanPause { get; }
         double Volume { get; set; }
         bool CanChangeRate { get; }
+        bool IsPlaying { get; }
 
         void Play();
         void Pause();
+
+        IAudioTrack CurrentTrack { get; set; }
 
         event EventHandler PlayStateChanged;
     }
@@ -28,15 +31,7 @@ namespace PlatformAdapter
         Uri Source { get; set; }
         Uri AlbumArt { get; set; }
         TimeSpan Duration { get; }
-    }
 
-    public class BackgroundAudioTrack
-    {
-        public string Album { get; set; }
-        public string Artist { get; set; }
-        public Uri Source { get; set; }
-        public Uri AlbumArt { get; set; }
-        public TimeSpan Duration { get; private set; }
-
+        string Title { get; set; }
     }
 }

@@ -35,6 +35,24 @@ namespace PlatformAdapter.Phone8
 
         public BackgroundAudio() : this(BackgroundAudioPlayer.Instance)
         {
+            
+        }
+
+        public BackgroundAudioTrack Track
+        {
+            get
+            {
+                if (null == this.player.Track)
+                {
+                    return null;
+                }
+
+                return new BackgroundAudioTrack(this.player.Track);
+            }
+            set
+            {
+                this.player.Track = value.Track;
+            }
         }
 
         public bool CanSeek
@@ -75,7 +93,7 @@ namespace PlatformAdapter.Phone8
 
         public IAudioTrack CreateAudioTrack()
         {
-            throw new NotImplementedException();
+            return new BackgroundAudioTrack();
         }
 
         public bool CanChangeRate
@@ -95,6 +113,24 @@ namespace PlatformAdapter.Phone8
 
 
         public event EventHandler PlayStateChanged;
+
+
+        public bool IsPlaying
+        {
+            get { return this.player.PlayerState == PlayState.Playing; }
+        }
+
+        public IAudioTrack CurrentTrack
+        {
+            get
+            {
+                return new BackgroundAudioTrack(this.player.Track);
+            }
+            set
+            {
+                this.player.Track = ((BackgroundAudioTrack)value).Track;
+            }
+        }
     }
 
     internal sealed class BackgroundAudioTrack : IAudioTrack
@@ -105,6 +141,13 @@ namespace PlatformAdapter.Phone8
         {
             this.track = track;
         }
+
+        public BackgroundAudioTrack()
+        {
+            this.track = new AudioTrack();
+        }
+
+        internal AudioTrack Track { get { return this.track;  } }
 
         public string Album
         {
@@ -157,6 +200,19 @@ namespace PlatformAdapter.Phone8
         public TimeSpan Duration
         {
             get { return this.track.Duration; }
+        }
+
+
+        public string Title
+        {
+            get
+            {
+                return this.track.Title;
+            }
+            set
+            {
+                this.track.Title = value;
+            }
         }
     }
 
