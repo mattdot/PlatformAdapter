@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Media;
+using Windows.UI.Core;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace PlatformAdapter.Windows
@@ -11,46 +13,14 @@ namespace PlatformAdapter.Windows
     internal sealed class BackgroundAudio : IBackgroundAudio
     {
         MediaElement mediaElement;
-
-        public BackgroundAudio()
-        {
-            MediaControl.PlayPauseTogglePressed += MediaControl_PlayPauseTogglePressed;
-            MediaControl.PausePressed += MediaControl_PausePressed;
-            MediaControl.PlayPressed += MediaControl_PlayPressed;
-            MediaControl.StopPressed += MediaControl_StopPressed;
-            MediaControl.NextTrackPressed += MediaControl_NextTrackPressed;
-        }
-
-        void MediaControl_NextTrackPressed(object sender, object e)
-        {
-            
-        }
-
-        void MediaControl_StopPressed(object sender, object e)
-        {
-            
-        }
-
-        void MediaControl_PlayPressed(object sender, object e)
-        {
-                
-        }
-
-        void MediaControl_PausePressed(object sender, object e)
-        {
-  
-        }
-
-        void MediaControl_PlayPauseTogglePressed(object sender, object e)
-        {
-            
-        }
+        CoreDispatcher dispatcher;
 
         public BackgroundAudio(MediaElement mediaElement)
         {
             this.mediaElement = mediaElement;
-
+            this.dispatcher = mediaElement.Dispatcher;
             this.mediaElement.CurrentStateChanged += OnCurrentStateChanged;
+            
         }
 
         void OnCurrentStateChanged(object sender, global::Windows.UI.Xaml.RoutedEventArgs e)
@@ -111,17 +81,19 @@ namespace PlatformAdapter.Windows
 
         public void Play()
         {
-            this.mediaElement.Play();
+            this.dispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(() => {
+                this.mediaElement.Play();
+            })).GetResults();            
         }
 
         public void Pause()
         {
-            this.mediaElement.Pause();
+            this.dispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(() => {
+                this.mediaElement.Pause();
+            })).GetResults();
         }
 
-
         public event EventHandler PlayStateChanged;
-
 
         public bool IsPlaying
         {
@@ -145,48 +117,25 @@ namespace PlatformAdapter.Windows
                 MediaControl.AlbumArt = value.AlbumArt;
                 MediaControl.ArtistName = value.Artist;
                 MediaControl.TrackName = value.Title;
-                this.mediaElement.Source = value.Source;
+                this.dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    this.mediaElement.Source = value.Source;
+                }).GetResults();
             }
         }
     }
 
     internal sealed class BackgroundAudioTrack : IAudioTrack
     {
-
-        public string Album
-        {
-            get;
-            set;
-        }
-
-        public string Artist
-        {
-            get;
-            set;
-        }
-
-        public Uri Source
-        {
-            get;
-            set;
-        }
-
-        public Uri AlbumArt
-        {
-            get;
-            set;
-        }
+        public string Title { get; set; }
+        public string Album { get; set; }
+        public string Artist { get; set; }
+        public Uri Source { get; set; }
+        public Uri AlbumArt { get; set; }
 
         public TimeSpan Duration
         {
             get { return TimeSpan.Zero; }
-        }
-
-
-        public string Title
-        {
-            get;
-            set;
         }
     }
 }

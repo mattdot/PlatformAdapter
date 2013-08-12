@@ -13,7 +13,7 @@ namespace PlatformAdapter.Phone8
 
         public BackgroundAudio(BackgroundAudioPlayer player)
         {
-            if (null == this.player)
+            if (null == player)
             {
                 throw new ArgumentNullException("player", "Must provide an instance of BackgroundAudioPlayer");
             }
@@ -157,7 +157,9 @@ namespace PlatformAdapter.Phone8
             }
             set
             {
+                this.track.BeginEdit();
                 this.track.Album = value;
+                this.track.EndEdit();
             }
         }
 
@@ -169,7 +171,9 @@ namespace PlatformAdapter.Phone8
             }
             set
             {
+                this.track.BeginEdit();
                 this.track.Artist = value;
+                this.track.EndEdit();
             }
         }
 
@@ -181,7 +185,9 @@ namespace PlatformAdapter.Phone8
             }
             set
             {
+                this.track.BeginEdit();
                 this.track.Source = value;
+                this.track.EndEdit();
             }
         }
 
@@ -193,7 +199,9 @@ namespace PlatformAdapter.Phone8
             }
             set
             {
+                this.track.BeginEdit();
                 this.track.AlbumArt = value;
+                this.track.EndEdit();
             }
         }
 
@@ -211,7 +219,9 @@ namespace PlatformAdapter.Phone8
             }
             set
             {
+                this.track.BeginEdit();
                 this.track.Title = value;
+                this.track.EndEdit();
             }
         }
     }
