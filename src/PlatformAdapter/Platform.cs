@@ -7,7 +7,7 @@ using System.Text;
 namespace PlatformAdapter
 {
     /// <summary>
-    /// we should use a real dependency injection framework/implementation or MEF.  This is a hack
+    /// This is the primary API for the PlatformAdapter framework.
     /// </summary>
     public class Platform
     {
@@ -15,6 +15,9 @@ namespace PlatformAdapter
 
         private static readonly Platform current = new Platform(new SimpleServiceLocator());
         
+        /// <summary>
+        /// Gets a reference to the current platform adapter implementation.
+        /// </summary>
         public static Platform Current
         {
             get
@@ -23,6 +26,11 @@ namespace PlatformAdapter
             }
         }
 
+        /// <summary>
+        /// Retrieves an instance of a PlatformAdapter service.
+        /// </summary>
+        /// <typeparam name="T">A platform adapter interface.</typeparam>
+        /// <returns></returns>
         public static T Resolve<T>()
         {
             return Platform.current.locator.Resolve<T>();
@@ -32,13 +40,26 @@ namespace PlatformAdapter
         {
             get
             {
-                if (null == Platform.current.backgroundAudio)
-                {
-                    Platform.current.backgroundAudio = Platform.Resolve<IBackgroundAudio>();
-                }
-                return Platform.current.backgroundAudio;
+                return Platform.current.backgroundAudio.Value;
             }
         }
+
+        public static ICryptographyAdapter Cryptography
+        {
+            get
+            {
+                return Platform.current.cryptography.Value;
+            }
+        }
+
+        public static IStorageAdapter Storage
+        {
+            get
+            {
+                return Platform.current.storage.Value;
+            }
+        }
+
 
         #endregion
 
@@ -47,13 +68,21 @@ namespace PlatformAdapter
             this.Locator = locator;
         }
 
-        private IBackgroundAudio backgroundAudio;
         private IServiceLocator locator;
+
+        private Lazy<IBackgroundAudio> backgroundAudio = new Lazy<IBackgroundAudio>(Platform.Resolve<IBackgroundAudio>);
+        private Lazy<ICryptographyAdapter> cryptography = new Lazy<ICryptographyAdapter>(Platform.Resolve<ICryptographyAdapter>);
+        private Lazy<IStorageAdapter> storage = new Lazy<IStorageAdapter>(Platform.Resolve<IStorageAdapter>);
 
         public IServiceLocator Locator
         {
             get
             {
+                if (null == this.locator)
+                {
+                    throw new InvalidOperationException("Platform.Locator must be set before Platform can be used.");
+                }
+
                 return this.locator;
             }
             set
@@ -66,7 +95,5 @@ namespace PlatformAdapter
                 this.locator = value;
             }
         }
-
-        
     }
 }

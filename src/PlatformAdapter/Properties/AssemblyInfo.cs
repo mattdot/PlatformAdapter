@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("PlatformAdapter")]
 [assembly: AssemblyDescription("Alpha - DO NOT USE")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Matt Dotson")]
+[assembly: AssemblyCompany("DPE TED")]
 [assembly: AssemblyProduct("PlatformAdapter")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
@@ -26,6 +26,6 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyFileVersion("0.1.*")]
-[assembly: AssemblyInformationalVersion("0.1.*-alpha")]
+//[assembly: AssemblyVersion("0.1.*")]
+//[assembly: AssemblyFileVersion("0.1.*")]
+//[assembly: AssemblyInformationalVersion("0.1.*" + "-alpha")]

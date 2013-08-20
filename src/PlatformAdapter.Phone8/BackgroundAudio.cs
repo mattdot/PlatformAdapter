@@ -101,16 +101,6 @@ namespace PlatformAdapter.Phone8
             get { return false; }
         }
 
-        public void Play()
-        {
-            this.player.Play();
-        }
-
-        public void Pause()
-        {
-            this.player.Pause();
-        }
-
 
         public event EventHandler PlayStateChanged;
 
@@ -130,6 +120,17 @@ namespace PlatformAdapter.Phone8
             {
                 this.player.Track = ((BackgroundAudioTrack)value).Track;
             }
+        }
+
+
+        public Task PlayAsync()
+        {
+            return Task.Run(() => { this.player.Play(); });
+        }
+
+        public Task PauseAsync()
+        {
+            return Task.Run(() => { this.player.Pause(); });
         }
     }
 

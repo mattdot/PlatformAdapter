@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PlatformAdapter
 {
@@ -16,8 +17,8 @@ namespace PlatformAdapter
         bool CanChangeRate { get; }
         bool IsPlaying { get; }
 
-        void Play();
-        void Pause();
+        Task PlayAsync();
+        Task PauseAsync();
 
         IAudioTrack CurrentTrack { get; set; }
 

@@ -1,0 +1,64 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ output extension=".cs" #>
+
+using System.Reflection;
+
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+<#
+		var path = this.Host.ResolvePath("VersionInfo.cs");
+
+		if(File.Exists(path))
+		{
+			var text = File.ReadAllText(path);
+			var match = Regex.Match(text, @"AssemblyFileVersion\(""\d+\.\d+\.(?'bld'\d+)\.\d+""\)");
+			if (match.Success)
+			{
+				
+				if(match.Groups["bld"].Success)
+				{
+				
+					short bld;
+					if(Int16.TryParse(match.Groups["bld"].Value, out bld))
+					{
+						this.BuildNumber = ++bld;
+					}
+				}
+			}
+		}
+#>
+[assembly: AssemblyVersion("<#= this.Version() #>")]
+[assembly: AssemblyFileVersion("<#= this.FileVersion() #>")]
+[assembly: AssemblyInformationalVersion("<#= this.InfoVersion() #>")]
+<#+
+
+	short MajorVersion = 0;
+	short MinorVersion = 2;
+	short BuildNumber = 1;
+    short RevisionNumber = 0;
+	string Informational = "alpha";
+
+
+	public string Version() {
+		return String.Format("{0}.{1}.{2}.{3}", this.MajorVersion, this.MinorVersion, 0, 0);
+	}
+
+	public string FileVersion() {
+		return String.Format("{0}.{1}.{2}.{3}", this.MajorVersion, this.MinorVersion, this.BuildNumber, this.RevisionNumber);
+	}
+
+	public string InfoVersion() {
+		var shortVersion = String.Format("{0}.{1}.{2}", MajorVersion, MinorVersion, BuildNumber);
+		return String.IsNullOrEmpty(Informational) ? shortVersion : shortVersion + "-" + Informational;
+	}
+#>
