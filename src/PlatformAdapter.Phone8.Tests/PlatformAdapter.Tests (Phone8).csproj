@@ -99,6 +99,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\untrusted.snk">
+      <Link>untrusted.snk</Link>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
@@ -135,9 +138,9 @@
       <Project>{5F02AA2F-131D-487D-AACA-16CF77392A92}</Project>
       <Name>PlatformAdapter.Phone8</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PlatformAdapter.Polyfills\PlatformAdapter.Polyfills %28Phone8%29.csproj">
-      <Project>{90BEAF18-B100-4C8A-B1D4-742C8DA02DF7}</Project>
-      <Name>PlatformAdapter.Polyfills %28Phone8%29</Name>
+    <ProjectReference Include="..\PlatformAdapter\PlatformAdapter.csproj">
+      <Project>{2B3BC557-165A-4565-B2C8-BF5B2F5814FE}</Project>
+      <Name>PlatformAdapter</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -22,14 +22,14 @@ namespace PlatformAdapter.Phone7.Storage
                 throw new System.IO.DirectoryNotFoundException();
             }
 
-            this.path = path;
+            this.path = PathConvert.ToPhonePath(path);
         }
 
-        public Windows.Storage.FileAttributes Attributes
+        public PlatformAdapter.Storage.FileAttributes Attributes
         {
             get
             {
-                return Windows.Storage.FileAttributes.Normal;
+                return PlatformAdapter.Storage.FileAttributes.Normal;
             }
             //get 
             //{
@@ -73,7 +73,7 @@ namespace PlatformAdapter.Phone7.Storage
 
         public string Path
         {
-            get { return System.IO.Path.GetFullPath(this.path); }
+            get { return PathConvert.ToWinRtPath(this.path); }
         }
 
         public System.Threading.Tasks.Task DeleteAsync()

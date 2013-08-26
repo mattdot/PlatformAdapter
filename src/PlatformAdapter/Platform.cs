@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PlatformAdapter
 {
@@ -12,6 +13,11 @@ namespace PlatformAdapter
     public class Platform
     {
         #region Static Implementation
+
+        static Platform()
+        {
+            //todo: auto-wire default implementations for platform.
+        }
 
         private static readonly Platform current = new Platform(new SimpleServiceLocator());
         
@@ -24,6 +30,16 @@ namespace PlatformAdapter
             {
                 return Platform.current;
             }
+        }
+
+        public static Task InitializeAsync<T>() where T : IPlatform, new()
+        {
+            var tcs = new TaskCompletionSource<object>();
+            var p = new T();
+            p.Initialize();
+
+            tcs.SetResult(null);
+            return tcs.Task;
         }
 
         /// <summary>
@@ -60,11 +76,32 @@ namespace PlatformAdapter
             }
         }
 
+        public static ISettingsAdapter Settings
+        {
+            get
+            {
+                return Platform.Resolve<ISettingsAdapter>();
+            }
+        }
+
+        public static INavigationAdapter Navigate
+        {
+            get
+            {
+                return Platform.Resolve<INavigationAdapter>();
+            }
+        }
+
 
         #endregion
 
         private Platform(IServiceLocator locator)
         {
+            if (null == locator)
+            {
+                throw new ArgumentNullException("locator");
+            }
+
             this.Locator = locator;
         }
 

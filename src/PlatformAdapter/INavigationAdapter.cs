@@ -10,5 +10,6 @@ namespace PlatformAdapter
     {
         void NavigateToModel(object model, object parameter = null);
         void NavigateTo(Uri address);
+        void NavigateTo(string address);
     }
 }

@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
-using Windows.Storage;
 
 namespace PlatformAdapter.Storage
 {
-
-
     // Summary:
     //     Specifies whether an item that is deleted is sent to the Recycle Bin or permanently
     //     deleted.

@@ -109,6 +109,9 @@
     <SDKReference Include="TestPlatform, Version=11.0" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\PlatformAdapter\Properties\VersionInfo.cs">
+      <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
     <Compile Include="StorageTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -116,6 +119,9 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="..\untrusted.snk">
+      <Link>untrusted.snk</Link>
+    </None>
     <None Include="packages.config" />
     <None Include="PlatformAdapter.Tests_TemporaryKey.pfx" />
   </ItemGroup>
@@ -134,10 +140,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PlatformAdapter.Polyfills\PlatformAdapter.Polyfills %28WindowsStore%29.csproj">
-      <Project>{1b9b2bb7-7b67-485a-8ca4-96acaf023a7f}</Project>
-      <Name>PlatformAdapter.Polyfills %28WindowsStore%29</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PlatformAdapter.WindowsStore\PlatformAdapter.WindowsStore.csproj">
       <Project>{fc41ffaf-c874-4a83-8947-2c114bd7fd03}</Project>
       <Name>PlatformAdapter.WindowsStore</Name>

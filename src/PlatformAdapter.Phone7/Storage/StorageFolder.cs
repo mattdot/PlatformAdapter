@@ -5,7 +5,7 @@ using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Storage;
+
 
 namespace PlatformAdapter.Phone7.Storage
 {

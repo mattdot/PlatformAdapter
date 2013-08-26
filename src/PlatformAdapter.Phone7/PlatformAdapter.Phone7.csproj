@@ -9,7 +9,7 @@
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PlatformAdapter.Phone7</RootNamespace>
+    <RootNamespace>PlatformAdapter</RootNamespace>
     <AssemblyName>PlatformAdapter.Phone7</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
@@ -72,23 +72,29 @@
     <Compile Include="..\PlatformAdapter\Properties\VersionInfo.cs">
       <Link>Properties\VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="Phone7\GeolocatorAdapter.cs" />
+    <Compile Include="PathConvert.cs" />
+    <Compile Include="Phone7Platform.cs" />
+    <Compile Include="Phone7\AppInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StorageAdapter.cs" />
     <Compile Include="Storage\StorageFile.cs" />
     <Compile Include="Storage\StorageFolder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PlatformAdapter.Polyfills\PlatformAdapter.Polyfills.csproj">
-      <Project>{D34E280D-A124-4FAE-BB29-5DBE1A873D03}</Project>
-      <Name>PlatformAdapter.Polyfills</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PlatformAdapter\PlatformAdapter.csproj">
       <Project>{2B3BC557-165A-4565-B2C8-BF5B2F5814FE}</Project>
       <Name>PlatformAdapter</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\untrusted.snk">
+      <Link>untrusted.snk</Link>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UI\Converters\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

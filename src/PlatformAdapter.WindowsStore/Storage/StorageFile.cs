@@ -1,13 +1,14 @@
-﻿using System;
+﻿using PlatformAdapter.Storage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Storage;
+
 
 namespace PlatformAdapter.WindowsStore.Storage
 {
-    public class StorageFile : PlatformAdapter.Storage.IStorageFile
+    public class StorageFile : IStorageFile
     {
         global::Windows.Storage.IStorageFile file;
 
@@ -23,7 +24,7 @@ namespace PlatformAdapter.WindowsStore.Storage
 
         public FileAttributes Attributes
         {
-            get { return this.file.Attributes; }
+            get { return (FileAttributes) this.file.Attributes; }
         }
 
         public DateTimeOffset DateCreated

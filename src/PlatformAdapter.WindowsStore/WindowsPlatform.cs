@@ -14,14 +14,15 @@ namespace PlatformAdapter
         public static void Initialize(this Platform platform)
         {
             platform.Locator.RegisterType<IDispatcherAdapter>(() => new WindowsDispatcher());
+            platform.Locator.RegisterType<ICryptographyAdapter>(() => new CryptographyAdapter());
+            platform.Locator.RegisterType<IStorageAdapter>(() => new StorageAdapter());
         }
 
         public static void Configure<T>(this Platform platform, MediaElement mediaElement) where T : IBackgroundAudio
         {
             platform.Locator.RegisterInstance<MediaElement>(mediaElement);
             platform.Locator.RegisterType<IBackgroundAudio>(() => new BackgroundAudio(platform.Locator.Resolve<MediaElement>()));
-            platform.Locator.RegisterType<ICryptographyAdapter>(() => new CryptographyAdapter());
-            platform.Locator.RegisterType<IStorageAdapter>(() => new StorageAdapter());
+
         }
     }
 }

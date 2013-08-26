@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PlatformAdapter
 {
-    public interface IPlatformAdapter
+    public interface IPlatformAdapter : IDisposable
     {
     }
 }

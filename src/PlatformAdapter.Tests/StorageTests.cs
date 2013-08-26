@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using System.Threading.Tasks;
+using PlatformAdapter.WindowsStore;
+using System.Reflection;
 
 namespace PlatformAdapter.Tests
 {
@@ -14,7 +16,7 @@ namespace PlatformAdapter.Tests
         public async Task WriteThenReadTest()
         {
             Platform.Current.Initialize();
-            var expected = "hello world";
+            var expected = Guid.NewGuid().ToString();
             var file = await Platform.Storage.LocalFolder.CreateFileAsync("foo.test");
             await Platform.Storage.WriteTextAsync(file, expected);
             var actual = await Platform.Storage.ReadTextAsync(file);
@@ -22,12 +24,21 @@ namespace PlatformAdapter.Tests
             Assert.AreEqual<string>(expected, actual);
 
             await file.DeleteAsync();
-            
+
         }
 
         [TestMethod]
-        public void FooTest()
+        public async Task AsyncTest()
         {
+            await new Task(() => { });
+        }
+
+        [TestMethod]
+        public async Task FooTest()
+        {
+            var dt = await AppInfo.RetrieveLinkerTimestamp(typeof(StorageTests).GetTypeInfo().Assembly);
+
+            Assert.IsTrue(DateTime.Today.AddDays(-1.0) < dt);
         }
     }
 }

@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="PlatformAdapter.Android\Android\Geolocator.Android.cs">
+    <Files>
+      <File FileName="PlatformAdapter.Android\Android\StorageAdapter.cs" Line="6" Column="48" />
+      <File FileName="PlatformAdapter.Android\Android\StorageAdapter.Android.cs" Line="3" Column="1" />
+      <File FileName="PlatformAdapter.Android\Android\Geolocator.Android.cs" Line="10" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

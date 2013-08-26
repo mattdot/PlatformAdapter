@@ -1,13 +1,14 @@
-﻿using System;
+﻿using PlatformAdapter.Storage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Storage;
+
 
 namespace PlatformAdapter.WindowsStore.Storage
 {
-    public class StorageFolder : PlatformAdapter.Storage.IStorageFolder
+    public class StorageFolder : IStorageFolder
     {
         private global::Windows.Storage.IStorageFolder storageFolder;
 

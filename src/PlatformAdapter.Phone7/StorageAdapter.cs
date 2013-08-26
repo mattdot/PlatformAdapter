@@ -15,7 +15,12 @@ namespace PlatformAdapter.Phone7
 
         public StorageAdapter()
         {
-            this.iso = IsolatedStorageFile.GetUserStoreForApplication();    
+            this.iso = IsolatedStorageFile.GetUserStoreForApplication();
+        }
+
+        public StorageAdapter(IsolatedStorageFile file)
+        {
+            this.iso = file;
         }
 
         public IStorageFolder LocalFolder
@@ -101,6 +106,30 @@ namespace PlatformAdapter.Phone7
         public Task WriteLinesAsync(IStorageFile file, IEnumerable<string> lines)
         {
             throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (null != this.iso)
+            {
+                this.iso.Dispose();
+                this.iso = null;
+            }
+
+            if (disposing)
+            {
+                GC.SuppressFinalize(this);
+            }
+        }
+
+        ~StorageAdapter()
+        {
+            Dispose(false);
         }
     }
 }

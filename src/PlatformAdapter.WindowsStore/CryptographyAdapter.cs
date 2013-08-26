@@ -38,5 +38,37 @@ namespace PlatformAdapter.WindowsStore
         public void Teardown()
         {
         }
+
+        #region IDisposable
+
+        public void Dispose()
+        {
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~CryptographyAdapter()
+        {
+            this.Dispose(false);
+        }
+
+        protected bool IsDisposed { get; private set; }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.IsDisposed)
+            {
+                if (disposing)
+                {
+                    //dispose managed resources
+                }
+
+                //dispose unmanaged resources
+
+                this.IsDisposed = true;
+            }
+        }
+
+        #endregion
     }
 }
