@@ -32,11 +32,11 @@ namespace PlatformAdapter
             }
         }
 
-        public static Task InitializeAsync<T>() where T : IPlatform, new()
+        public static Task InitializeAsync<T>() where T : IPlatformBuilder, new()
         {
             var tcs = new TaskCompletionSource<object>();
             var p = new T();
-            p.Initialize();
+            p.Build(Platform.current);
 
             tcs.SetResult(null);
             return tcs.Task;

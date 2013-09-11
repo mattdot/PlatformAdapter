@@ -14,7 +14,7 @@ namespace PlatformAdapter.Tests.Phone7
         [Test]
         public async Task WriteThenReadTest7()
         {
-            await Platform.InitializeAsync<Phone7Platform>();
+            await Platform.InitializeAsync<Phone7PlatformBuilder>();
 
             var expected = Guid.NewGuid().ToString();
             var file = await Platform.Storage.LocalFolder.CreateFileAsync("foo.test");

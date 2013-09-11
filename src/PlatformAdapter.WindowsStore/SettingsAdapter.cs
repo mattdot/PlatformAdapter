@@ -53,6 +53,16 @@ namespace PlatformAdapter.WindowsStore
         {
             throw new NotImplementedException();
         }
+
+        public void SaveCredential(string identifier, SavedCredential credential)
+        {
+            throw new NotImplementedException();
+        }
+
+        SavedCredential ISettingsAdapter.LoadCredential(string identifier)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
@@ -70,7 +80,7 @@ namespace PlatformAdapter
             return null;
         }
 
-        public static SavedCredential AsPasswordCredential(this SavedCredential credential)
+        public static PasswordCredential AsPasswordCredential(this SavedCredential credential)
         {
             if (null != credential)
             {

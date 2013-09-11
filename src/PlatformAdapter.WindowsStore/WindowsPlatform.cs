@@ -25,4 +25,14 @@ namespace PlatformAdapter
 
         }
     }
+
+    public sealed class WindowsStorePlatformBuilder : IPlatformBuilder
+    {
+        public void Build(Platform platform)
+        {
+            platform.Locator.RegisterType<IDispatcherAdapter>(() => new WindowsDispatcher());
+            platform.Locator.RegisterType<ICryptographyAdapter>(() => new CryptographyAdapter());
+            platform.Locator.RegisterType<IStorageAdapter>(() => new StorageAdapter());
+        }
+    }
 }

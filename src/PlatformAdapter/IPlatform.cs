@@ -5,8 +5,8 @@ using System.Text;
 
 namespace PlatformAdapter
 {
-    public interface IPlatform
+    public interface IPlatformBuilder
     {
-        void Initialize();
+        void Build(Platform platform);
     }
 }

@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using System.Runtime.InteropServices.WindowsRuntime;
 
+#if WINDOW_PHONE
+namespace PlatformAdapter.Phone8
+#else
 namespace PlatformAdapter.WindowsStore
+#endif
 {
     internal class StorageAdapter : IStorageAdapter
     {
