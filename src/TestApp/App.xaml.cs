@@ -58,9 +58,11 @@ namespace TestApp
 
             Test();
 
-            Platform.Settings.LoadCredential("foo").AsPasswordCredential();
+            SavedCredential cred;
+            Platform.Settings.TryGetCredential("foo", out cred); 
+            var pwdc = cred.AsPasswordCredential();
             Platform.Settings.SaveLocal("boo", new { v = "" });
-            Platform.Settings.LoadLocal<object>("boo");
+            Platform.Settings.GetLocal<object>("boo");
             
 
             // Do not repeat app initialization when the Window already has content,

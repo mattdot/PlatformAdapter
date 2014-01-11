@@ -11,7 +11,8 @@ namespace PlatformAdapter
     {
         public static void Initialize(this Platform platform)
         {
-            platform.Locator.RegisterType<IBackgroundAudio, BackgroundAudio>();
+            new Phone8PlatformBuilder().Build(platform);
+            //platform.Locator.RegisterType<IBackgroundAudio, BackgroundAudio>();
         }
     }
 }
@@ -22,8 +23,10 @@ namespace PlatformAdapter.Phone8
     {
         public void Build(Platform platform)
         {
-            platform.Locator.RegisterType<IBackgroundAudio, BackgroundAudio>();
+            //platform.Locator.RegisterType<IBackgroundAudio, BackgroundAudio>();
             platform.Locator.RegisterType<IStorageAdapter, StorageAdapter>();
+            platform.Locator.RegisterType<ISettingsAdapter, SettingsAdapter>();
+            platform.Locator.RegisterType<IGeolocationAdapter, GeolocationAdapter>();
         }
     }
 

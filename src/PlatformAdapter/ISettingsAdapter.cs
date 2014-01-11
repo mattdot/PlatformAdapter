@@ -9,12 +9,13 @@ namespace PlatformAdapter
     public interface ISettingsAdapter
     {
         void SaveCredential(string identifier, SavedCredential credential);
-        SavedCredential LoadCredential(string identifier);
-
+        bool TryGetCredential(string identifier, out SavedCredential credential);
         void SaveLocal<T>(string identifier, T value);
-        T LoadLocal<T>(string identifier);
+        bool TryGetLocal<T>(string identifier, out T value);
         void SaveRoaming<T>(string identifier, T value);
-        T LoadRoaming<T>(string identifier);
+        bool TryGetRoaming<T>(string identifier, out T value);
+
+
     }
 
     public sealed class SavedCredential
@@ -22,5 +23,19 @@ namespace PlatformAdapter
         public string Resource { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
+    }
+
+    public static class SettingsAdapterExtensions
+    {
+        public static T GetLocal<T>(this ISettingsAdapter settings, string identifier, T defaultValue = default(T))
+        {
+            T val;
+            if (!settings.TryGetLocal<T>(identifier, out val))
+            {
+                return defaultValue;
+            }
+
+            return val;
+        }
     }
 }

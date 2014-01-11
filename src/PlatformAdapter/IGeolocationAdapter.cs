@@ -19,6 +19,8 @@ namespace PlatformAdapter
 
     public interface IGeoposition
     {
+        double Latitude { get; }
+        double Longitude { get; }
     }
 
     public sealed class GeolocationOptions

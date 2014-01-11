@@ -80,7 +80,7 @@ namespace PlatformAdapter
         {
             get
             {
-                return Platform.Resolve<ISettingsAdapter>();
+                return Platform.current.settings.Value;
             }
         }
 
@@ -110,7 +110,7 @@ namespace PlatformAdapter
         private Lazy<IBackgroundAudio> backgroundAudio = new Lazy<IBackgroundAudio>(Platform.Resolve<IBackgroundAudio>);
         private Lazy<ICryptographyAdapter> cryptography = new Lazy<ICryptographyAdapter>(Platform.Resolve<ICryptographyAdapter>);
         private Lazy<IStorageAdapter> storage = new Lazy<IStorageAdapter>(Platform.Resolve<IStorageAdapter>);
-
+        private Lazy<ISettingsAdapter> settings = new Lazy<ISettingsAdapter>(Platform.Resolve<ISettingsAdapter>);
         public IServiceLocator Locator
         {
             get

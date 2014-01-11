@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{C1DDF02B-B1EC-4936-AA90-34DCF7FDF15D}"
 	ProjectSection(SolutionItems) = preProject
 		PlatformAdapter\PlatformAdapter.nuspec = PlatformAdapter\PlatformAdapter.nuspec
@@ -8,13 +10,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{C1DDF02B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Phone7", "Phone7", "{9A90BE78-2B3D-43AD-84A9-ACBE9962EE8D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Phone8", "Phone8", "{0007B455-13B7-4C6C-ADD2-1E40FD3E7FFC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WindowsStore", "WindowsStore", "{08A137F7-F1DE-4CD9-856F-695B8802977A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Portable", "Portable", "{A678FA41-C5D6-4D1D-BF03-55BFFB51AB51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iOS", "iOS", "{CBF6E58A-750A-4226-8B7B-6C0FF4ECC157}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Android", "Android", "{39DCC6CE-0F6E-4F9F-B244-7EC1E1B2E0E0}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformAdapter.Phone7", "PlatformAdapter.Phone7\PlatformAdapter.Phone7.csproj", "{B5148A23-E8EF-4295-89E6-3718A0F03A46}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformAdapter.Tests.Phone7", "PlatformAdapter.Tests.Phone7\PlatformAdapter.Tests.Phone7.csproj", "{343C2D96-6365-485C-8698-5B93FE35663A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAppPhone7", "TestAppPhone7\TestAppPhone7.csproj", "{3F3BE01B-4D31-40A4-A67F-8E6CE9F1AD21}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Phone8", "Phone8", "{0007B455-13B7-4C6C-ADD2-1E40FD3E7FFC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformAdapter.Phone8", "PlatformAdapter.Phone8\PlatformAdapter.Phone8.csproj", "{5F02AA2F-131D-487D-AACA-16CF77392A92}"
 EndProject
@@ -22,21 +32,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformAdapter.Tests (Phon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformAdapter.Tests.Phone8", "PlatformAdapter.Tests.Phone8\PlatformAdapter.Tests.Phone8.csproj", "{7C36217E-FFB4-4C87-AE0C-9B57807E686C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WindowsStore", "WindowsStore", "{08A137F7-F1DE-4CD9-856F-695B8802977A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformAdapter.WindowsStore", "PlatformAdapter.WindowsStore\PlatformAdapter.WindowsStore.csproj", "{FC41FFAF-C874-4A83-8947-2C114BD7FD03}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformAdapter.Tests (WindowsStore)", "PlatformAdapter.Tests\PlatformAdapter.Tests (WindowsStore).csproj", "{3D156C2E-4125-4754-994C-CDD7F7482BFF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{0C0DE89B-ABAD-453A-BED0-F0DE286C5279}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Portable", "Portable", "{A678FA41-C5D6-4D1D-BF03-55BFFB51AB51}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformAdapter", "PlatformAdapter\PlatformAdapter.csproj", "{2B3BC557-165A-4565-B2C8-BF5B2F5814FE}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iOS", "iOS", "{CBF6E58A-750A-4226-8B7B-6C0FF4ECC157}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Android", "Android", "{39DCC6CE-0F6E-4F9F-B244-7EC1E1B2E0E0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformAdapter.Android", "PlatformAdapter.Android\PlatformAdapter.Android.csproj", "{1EC7C6FE-893D-442C-9094-483D9D9E22E5}"
 EndProject

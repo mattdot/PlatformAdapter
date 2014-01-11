@@ -59,7 +59,18 @@ namespace PlatformAdapter.WindowsStore
             throw new NotImplementedException();
         }
 
-        SavedCredential ISettingsAdapter.LoadCredential(string identifier)
+
+        public bool TryGetCredential(string identifier, out SavedCredential credential)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool TryGetLocal<T>(string identifier, out T value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool TryGetRoaming<T>(string identifier, out T value)
         {
             throw new NotImplementedException();
         }
